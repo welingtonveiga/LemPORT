@@ -1,0 +1,41 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'application'
+
+mainClassName = 'examples.LemmatizerExample'
+
+// tag::repositories[]
+repositories {
+    mavenCentral()
+}
+// end::repositories[]
+
+// tag::jar[]
+jar {
+    baseName = 'LemPortService'
+    version =  '1.0.0'
+}
+// end::jar[]
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src/']
+        }
+        resources {
+            srcDirs = []
+        }
+    }
+}
+
+// tag::dependencies[]
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+   compile "com.sparkjava:spark-core:2.7.1" 
+}
+// end::dependencies[]
+
+// tag::wrapper[]
+// end::wrapper[]
