@@ -2,7 +2,7 @@ apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'application'
 
-mainClassName = 'examples.LemmatizerExample'
+mainClassName = 'webapi.App'
 
 // tag::repositories[]
 repositories {
@@ -14,6 +14,14 @@ repositories {
 jar {
     baseName = 'LemPortService'
     version =  '1.0.0'
+
+    manifest {
+        attributes "Main-Class": "webapi.App"
+    }
+
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
 }
 // end::jar[]
 
